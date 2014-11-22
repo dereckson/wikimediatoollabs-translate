@@ -147,8 +147,22 @@ class LinksTranslate {
 	public function substituteLinks ($text) {
 		foreach ($this->links as $link) {
 			if ($link[1] == '') {
-				//TODO: offer an interwiki template
-				continue;
+				//Quick test to gather feedback from Ælfgar and Feldo following a request of the last.
+				//This doesn't handle pipes or anchors.
+				//The final implementation will use preg_replace with a callback supporting several templates,
+				//like {{ill}} on English Wikipedia.
+				if ($this->targetProject == 'fr') {
+					$text = str_replace(
+						'[[' . $link[0] . ']]',
+						'{{Lien|trad=' . $link[0] . "|lang=$this->sourceProject|fr=$link[0]}}",
+						$text
+					);
+					$text = str_replace(
+						'[[' . lcfirst($link[0]) . ']]',
+						'{{Lien|trad=' . $link[0] . "|lang=$this->sourceProject|fr=$link[0]|texte=" . lcfirst($link[0]) . '}}',
+						$text
+					);
+				}
 			} else {
 				$text = str_replace('[[' . $link[0] . '|',  '[[' . $link[1] . '|',  $text);
 				$text = str_replace('[[' . $link[0] . ']]', '[[' . $link[1] . ']]', $text);
