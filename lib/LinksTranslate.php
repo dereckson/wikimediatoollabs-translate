@@ -169,15 +169,25 @@ class LinksTranslate {
 	 */
 	public function getTranslationReferenceTemplate ($revisionId) {
 		switch ($this->targetProject) {
-			case 'en':  return "{{Translation/Ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
-			case 'es':  return "{{Traducido ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId|trad=total}}<br />{{Traducido ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId|trad=parcial}}";
-			case 'et':  return "{{Tõlkimine/Ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
-			case 'fr':  return "{{Traduction/Référence|$this->sourceProject|$this->pageTitle|$revisionId}}";
-			case 'hu':  return "{{Fordítás|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
-			case 'pt':  return "{{Tradução/ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
-			case 'ru':  return "{{Источник/перевод|$this->sourceProject|$this->pageTitle|версия=$revisionId}}";
-			case 'zh':  return "{{Translation/Ref|lang=$this->sourceProject|article=$this->pageTitle|oldid=$revisionId}}";
-			default:    return "Last revision id on $this->sourceProject (<em>oldid</em>): $revisionId";
+			case 'af': return "{{Vertaling/Verwysing|$this->sourceProject|$this->pageTitle}}";
+			case 'el': return "{{Ενσωμάτωση κειμένου|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
+			case 'es': return "{{Traducido ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId|trad=total}}<br />{{Traducido ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId|trad=parcial}}";
+			case 'et': return "{{Tõlkimine/Ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
+			case 'fr': return "{{Traduction/Référence|$this->sourceProject|$this->pageTitle|$revisionId}}";
+			case 'hu': return "{{Fordítás|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
+			case 'id': return "{{Translation/Ref|$this->sourceProject|$this->pageTitle}}";
+			case 'pt': return "{{Tradução/ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
+			case 'ru': return "{{Источник/перевод|$this->sourceProject|$this->pageTitle|версия=$revisionId}}";
+			case 'sv': return "{{" . $this->sourceProject . "wp|artikel=$this->pageTitle}}";
+			case 'zh': return "{{Translation/Ref|lang=$this->sourceProject|article=$this->pageTitle|oldid=$revisionId}}";
+
+			case 'en':
+			case 'gu':
+			case 'ja':
+			case 'ne':
+			           return "{{Translation/Ref|$this->sourceProject|$this->pageTitle|oldid=$revisionId}}";
+
+			default:   return "Last revision id on $this->sourceProject (<em>oldid</em>): $revisionId";
 		}
 	}
 }
