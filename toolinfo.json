@@ -1,0 +1,9 @@
+{
+    "name" : "translate",
+    "title" : "Translate",
+    "description" : "Helps to translate the internal links, looking for each of them if an interwiki exists to the target wiki and printing a table or replacing them inline.",
+    "url" : "http://tools.wmflabs.org/translate",
+    "keywords" : "translate, translation, interwiki",
+    "author" : "Sébastien Santoro aka Dereckson"
+}
+
